@@ -16,5 +16,5 @@ export const Button = (props) => {
 Button.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
-  wide: PropTypes.bool.isRequired,
+  wide: PropTypes.bool,
 }

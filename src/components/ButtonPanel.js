@@ -16,33 +16,33 @@ export class ButtonPanel extends React.Component {
     return (
       <div style={containerStyles}>
         <div style={rowStyles}>
-          <Button wide={false} color="#ddd" name="AC"/>
-          <Button wide={false} color="#ddd" name="+/-"/>
-          <Button wide={false} color="#ddd" name="%"/>
-          <Button wide={false} name="+"/>
+          <Button color="#ddd" name="AC"/>
+          <Button color="#ddd" name="+/-"/>
+          <Button color="#ddd" name="%"/>
+          <Button name="+"/>
         </div>
         <div style={rowStyles}>
-          <Button wide={false} color="#ddd" name="7"/>
-          <Button wide={false} color="#ddd" name="8"/>
-          <Button wide={false} color="#ddd" name="9"/>
-          <Button wide={false} name="X"/>
+          <Button color="#ddd" name="7"/>
+          <Button color="#ddd" name="8"/>
+          <Button color="#ddd" name="9"/>
+          <Button name="X"/>
         </div>
         <div style={rowStyles}>
-          <Button wide={false} color="#ddd" name="4"/>
-          <Button wide={false} color="#ddd" name="5"/>
-          <Button wide={false} color="#ddd" name="6"/>
-          <Button wide={false} name="-"/>
+          <Button color="#ddd" name="4"/>
+          <Button color="#ddd" name="5"/>
+          <Button color="#ddd" name="6"/>
+          <Button name="-"/>
         </div>
         <div style={rowStyles}>
-          <Button wide={false} color="#ddd" name="1"/>
-          <Button wide={false} color="#ddd" name="2"/>
-          <Button wide={false} color="#ddd" name="3"/>
-          <Button wide={false} name="/"/>
+          <Button color="#ddd" name="1"/>
+          <Button color="#ddd" name="2"/>
+          <Button color="#ddd" name="3"/>
+          <Button name="/"/>
         </div>
         <div style={rowStyles}>
           <Button wide={true} color="#ddd" name="0"/>
-          <Button wide={false} color="#ddd" name="."/>
-          <Button wide={false} name="="/>
+          <Button color="#ddd" name="."/>
+          <Button name="="/>
         </div>
       </div>
     )
