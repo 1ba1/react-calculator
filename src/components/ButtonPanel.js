@@ -1,38 +1,48 @@
 import React from 'react';
 import { Button } from './Button';
 
+const containerStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const rowStyles = {
+  display: 'flex',
+  height: 100,
+};
+
 export class ButtonPanel extends React.Component {
   render() {
     return (
-      <div className="buttons-container">
-        <div>
-          <Button name="AC"/>
-          <Button name="+/-"/>
-          <Button name="%"/>
-          <Button name="+"/>
+      <div style={containerStyles}>
+        <div style={rowStyles}>
+          <Button wide={false} color="#ddd" name="AC"/>
+          <Button wide={false} color="#ddd" name="+/-"/>
+          <Button wide={false} color="#ddd" name="%"/>
+          <Button wide={false} name="+"/>
         </div>
-        <div>
-          <Button name="7"/>
-          <Button name="8"/>
-          <Button name="9"/>
-          <Button name="X"/>
+        <div style={rowStyles}>
+          <Button wide={false} color="#ddd" name="7"/>
+          <Button wide={false} color="#ddd" name="8"/>
+          <Button wide={false} color="#ddd" name="9"/>
+          <Button wide={false} name="X"/>
         </div>
-        <div>
-          <Button name="4"/>
-          <Button name="5"/>
-          <Button name="6"/>
-          <Button name="-"/>
+        <div style={rowStyles}>
+          <Button wide={false} color="#ddd" name="4"/>
+          <Button wide={false} color="#ddd" name="5"/>
+          <Button wide={false} color="#ddd" name="6"/>
+          <Button wide={false} name="-"/>
         </div>
-        <div>
-          <Button name="1"/>
-          <Button name="2"/>
-          <Button name="3"/>
-          <Button name="/"/>
+        <div style={rowStyles}>
+          <Button wide={false} color="#ddd" name="1"/>
+          <Button wide={false} color="#ddd" name="2"/>
+          <Button wide={false} color="#ddd" name="3"/>
+          <Button wide={false} name="/"/>
         </div>
-        <div>
-          <Button name="0"/>
-          <Button name="."/>
-          <Button name="="/>
+        <div style={rowStyles}>
+          <Button wide={true} color="#ddd" name="0"/>
+          <Button wide={false} color="#ddd" name="."/>
+          <Button wide={false} name="="/>
         </div>
       </div>
     )
