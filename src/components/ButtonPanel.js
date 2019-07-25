@@ -1,38 +1,39 @@
 import React from 'react';
 import Button from './Button';
 
-const ButtonPanel = () => (
-  <div>
-    <div>
-      <Button name="AC" />
-      <Button name="+/-" />
-      <Button name="%" />
-      <Button name="+" />
-    </div>
-    <div>
-      <Button name="7" />
-      <Button name="8" />
-      <Button name="9" />
-      <Button name="X" />
-    </div>
-    <div>
-      <Button name="4" />
-      <Button name="5" />
-      <Button name="6" />
-      <Button name="-" />
-    </div>
-    <div>
-      <Button name="1" />
-      <Button name="2" />
-      <Button name="3" />
-      <Button name="/" />
-    </div>
-    <div>
-      <Button name="0" />
-      <Button name="." />
-      <Button name="=" />
-    </div>
-  </div>
-);
+const containerStyles = {
+  display: 'flex',
+  flexWrap: 'wrap',
+};
+
+const buttons = [
+  'AC',
+  '+/-',
+  '%',
+  '+',
+  '7',
+  '8',
+  '9',
+  'X',
+  '4',
+  '5',
+  '6',
+  '-',
+  '1',
+  '2',
+  '3',
+  '/',
+  '0',
+  '.',
+  '=',
+].map((prop) => {
+  const regex = /^[+]$|^[-]$|X|^[/]$|=/;
+  if (regex.test(prop)) return <Button key={prop} name={prop} />;
+  if (prop === '0') return <Button key={prop} name={prop} color="#ddd" wide />;
+  return <Button key={prop} name={prop} color="#ddd" />;
+});
+
+
+const ButtonPanel = () => <div style={containerStyles}>{buttons}</div>;
 
 export default ButtonPanel;
