@@ -9,6 +9,7 @@ const Button = (props) => {
     backgroundColor: color,
     color: 'black',
     fontSize: 30,
+    height: 100,
     width: wide ? '50%' : '25%',
   };
 

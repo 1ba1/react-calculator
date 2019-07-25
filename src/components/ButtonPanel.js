@@ -3,46 +3,37 @@ import Button from './Button';
 
 const containerStyles = {
   display: 'flex',
-  flexDirection: 'column',
+  flexWrap: 'wrap',
 };
 
-const rowStyles = {
-  display: 'flex',
-  height: 100,
-};
+const buttons = [
+  'AC',
+  '+/-',
+  '%',
+  '+',
+  '7',
+  '8',
+  '9',
+  'X',
+  '4',
+  '5',
+  '6',
+  '-',
+  '1',
+  '2',
+  '3',
+  '/',
+  '0',
+  '.',
+  '=',
+].map((prop) => {
+  const regex = /^[+]$|^[-]$|X|^[/]$|=/;
+  if (regex.test(prop)) return <Button key={prop} name={prop} />;
+  if (prop === '0') return <Button key={prop} name={prop} color="#ddd" wide />;
+  return <Button key={prop} name={prop} color="#ddd" />;
+});
 
-const ButtonPanel = () => (
-  <div style={containerStyles}>
-    <div style={rowStyles}>
-      <Button name="AC" color="#ddd" />
-      <Button name="+/-" color="#ddd" />
-      <Button name="%" color="#ddd" />
-      <Button name="+" />
-    </div>
-    <div style={rowStyles}>
-      <Button name="7" color="#ddd" />
-      <Button name="8" color="#ddd" />
-      <Button name="9" color="#ddd" />
-      <Button name="X" />
-    </div>
-    <div style={rowStyles}>
-      <Button name="4" color="#ddd" />
-      <Button name="5" color="#ddd" />
-      <Button name="6" color="#ddd" />
-      <Button name="-" />
-    </div>
-    <div style={rowStyles}>
-      <Button name="1" color="#ddd" />
-      <Button name="2" color="#ddd" />
-      <Button name="3" color="#ddd" />
-      <Button name="/" />
-    </div>
-    <div style={rowStyles}>
-      <Button name="0" color="#ddd" wide />
-      <Button name="." color="#ddd" />
-      <Button name="=" />
-    </div>
-  </div>
-);
+
+const ButtonPanel = () => <div style={containerStyles}>{buttons}</div>;
 
 export default ButtonPanel;
