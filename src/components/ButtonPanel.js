@@ -1,35 +1,45 @@
 import React from 'react';
 import Button from './Button';
 
+const containerStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const rowStyles = {
+  display: 'flex',
+  height: 100,
+};
+
 const ButtonPanel = () => (
-  <div>
-    <div>
-      <Button name="AC" />
-      <Button name="+/-" />
-      <Button name="%" />
+  <div style={containerStyles}>
+    <div style={rowStyles}>
+      <Button name="AC" color="#ddd" />
+      <Button name="+/-" color="#ddd" />
+      <Button name="%" color="#ddd" />
       <Button name="+" />
     </div>
-    <div>
-      <Button name="7" />
-      <Button name="8" />
-      <Button name="9" />
+    <div style={rowStyles}>
+      <Button name="7" color="#ddd" />
+      <Button name="8" color="#ddd" />
+      <Button name="9" color="#ddd" />
       <Button name="X" />
     </div>
-    <div>
-      <Button name="4" />
-      <Button name="5" />
-      <Button name="6" />
+    <div style={rowStyles}>
+      <Button name="4" color="#ddd" />
+      <Button name="5" color="#ddd" />
+      <Button name="6" color="#ddd" />
       <Button name="-" />
     </div>
-    <div>
-      <Button name="1" />
-      <Button name="2" />
-      <Button name="3" />
+    <div style={rowStyles}>
+      <Button name="1" color="#ddd" />
+      <Button name="2" color="#ddd" />
+      <Button name="3" color="#ddd" />
       <Button name="/" />
     </div>
-    <div>
-      <Button name="0" />
-      <Button name="." />
+    <div style={rowStyles}>
+      <Button name="0" color="#ddd" wide />
+      <Button name="." color="#ddd" />
       <Button name="=" />
     </div>
   </div>
