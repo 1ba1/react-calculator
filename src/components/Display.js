@@ -13,8 +13,9 @@ const styles = {
   padding: '0 20px',
 };
 
-export const Display = (props) => {
-  return <div style={styles}>{props.result}</div>;
+const Display = (props) => {
+  const { result } = props;
+  return <div style={styles}>{result}</div>;
 }
 
 Display.propTypes = {
@@ -24,3 +25,5 @@ Display.propTypes = {
 Display.defaultProps = {
   result: '0',
 }
+
+export default Display;

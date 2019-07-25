@@ -1,6 +1,6 @@
 import React from 'react';
-import { Display } from './Display';
-import { ButtonPanel } from './ButtonPanel';
+import Display from './Display';
+import ButtonPanel from './ButtonPanel';
 
 const styles = {
   display: 'flex',
@@ -9,13 +9,11 @@ const styles = {
   width: 700,
 };
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div id="App" style={styles}>
-        <Display />
-        <ButtonPanel />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div id="App" style={styles}>
+    <Display />
+    <ButtonPanel />
+  </div>
+);
+
+export default App;
