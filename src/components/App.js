@@ -1,7 +1,7 @@
 import React from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
-// import calculate from '../logic/calculate';
+import calculate from '../logic/calculate';
 
 const styles = {
   display: 'flex',
@@ -10,11 +10,34 @@ const styles = {
   width: 700,
 };
 
-const App = () => (
-  <div id="App" style={styles}>
-    <Display />
-    <ButtonPanel />
-  </div>
-);
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default App;
+    this.state = {
+      total: null,
+      next: null,
+      operation: null,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(buttonName) {
+    this.setState(prevState => ({
+      total: calculate(prevState, buttonName).total,
+      next: calculate(prevState, buttonName).next,
+      operation: calculate(prevState, buttonName).operation,
+    }));
+  }
+
+  render() {
+    const { total, next } = this.state;
+    return (
+      <div id="App" style={styles}>
+        <Display result={next || total} />
+        <ButtonPanel clickHandler={this.handleClick} />
+      </div>
+    );
+  }
+}

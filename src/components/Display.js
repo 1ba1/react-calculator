@@ -13,7 +13,7 @@ const styles = {
   padding: '0 20px',
 };
 
-const Display = ({ result }) => <div style={styles}>{result}</div>;
+const Display = ({ result }) => <div style={styles}>{result || '0'}</div>;
 
 Display.propTypes = {
   result: PropTypes.string,

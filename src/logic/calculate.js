@@ -10,15 +10,15 @@ const calculate = ({ total, next, operation }, buttonName) => {
     newData.next = null;
     newData.operation = null;
   } else if (buttonName === '+/-') {
-    newData.total *= -1;
-    newData.next *= -1;
+    newData.total = (+newData.total * -1).toString();
+    if (newData.next !== null) newData.next = (+newData.next * -1).toString();
   } else if (opRegex.test(buttonName)) {
-    newData.operation = buttonName;
     if (newData.total !== null && newData.next !== null) {
       newData.total = operate(newData.total, newData.next, newData.operation);
       newData.next = null;
       newData.operation = null;
     }
+    newData.operation = buttonName;
   } else if (buttonName === '.') {
     if (
       newData.operation === null
@@ -45,7 +45,7 @@ const calculate = ({ total, next, operation }, buttonName) => {
         ? newData.total = buttonName
         : newData.total + buttonName;
     } else {
-      newData.next = newData.next === '0' || newData.next === null
+      newData.next = newData.next === null
         ? newData.next = buttonName
         : newData.next + buttonName;
     }
