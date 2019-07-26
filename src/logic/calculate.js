@@ -1,7 +1,7 @@
 import operate from './operate';
 
-const calculate = (data, buttonName) => {
-  const newData = JSON.parse(JSON.stringify(data));
+const calculate = ({ total, next, operation }, buttonName) => {
+  const newData = JSON.parse(JSON.stringify({ total, next, operation }));
   const opRegex = /^[+]$|^[-]$|X|÷|%/;
   const digitRegex = /\d/;
 
@@ -10,8 +10,8 @@ const calculate = (data, buttonName) => {
     newData.next = null;
     newData.operation = null;
   } else if (buttonName === '+/-') {
-    newData.total = data.total * -1;
-    newData.next = data.next * -1;
+    newData.total *= -1;
+    newData.next *= -1;
   } else if (opRegex.test(buttonName)) {
     newData.operation = buttonName;
     if (newData.total !== null && newData.next !== null) {
