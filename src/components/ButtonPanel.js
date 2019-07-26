@@ -22,12 +22,12 @@ const buttons = [
   '1',
   '2',
   '3',
-  '/',
+  '÷',
   '0',
   '.',
   '=',
 ].map((prop) => {
-  const regex = /^[+]$|^[-]$|X|^[/]$|=/;
+  const regex = /^[+]$|^[-]$|X|÷|=/;
   if (regex.test(prop)) return <Button key={prop} name={prop} />;
   if (prop === '0') return <Button key={prop} name={prop} color="#ddd" wide />;
   return <Button key={prop} name={prop} color="#ddd" />;
