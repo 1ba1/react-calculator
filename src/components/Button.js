@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = (props) => {
-  const { name, color, wide } = props;
-
+const Button = ({ name, color, wide }) => {
   const styles = {
     border: '1px solid #aaa',
     backgroundColor: color,
