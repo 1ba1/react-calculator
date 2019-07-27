@@ -11,25 +11,16 @@ const styles = {
 };
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    total: null,
+    next: null,
+    operation: null,
+    equalButtonPressed: false,
+  };
 
-    this.state = {
-      total: null,
-      next: null,
-      operation: null,
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(buttonName) {
-    this.setState(prevState => ({
-      total: calculate(prevState, buttonName).total,
-      next: calculate(prevState, buttonName).next,
-      operation: calculate(prevState, buttonName).operation,
-    }));
-  }
+  handleClick = (buttonName) => {
+    this.setState(prevState => (calculate(prevState, buttonName)));
+  };
 
   render() {
     const { total, next } = this.state;

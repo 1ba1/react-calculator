@@ -1,8 +1,18 @@
 import operate from './operate';
 
-const calculate = ({ total, next, operation }, buttonName) => {
-  const newData = JSON.parse(JSON.stringify({ total, next, operation }));
-  const opRegex = /^[+]$|^[-]$|X|÷|%/;
+const calculate = ({
+  total,
+  next,
+  operation,
+  equalButtonPressed,
+}, buttonName) => {
+  const newData = JSON.parse(JSON.stringify({
+    total,
+    next,
+    operation,
+    equalButtonPressed,
+  }));
+  const opRegex = /^[+]$|^[-]$|x|÷/;
   const digitRegex = /\d/;
 
   if (buttonName === 'AC') {
@@ -10,20 +20,28 @@ const calculate = ({ total, next, operation }, buttonName) => {
     newData.next = null;
     newData.operation = null;
   } else if (buttonName === '+/-') {
-    newData.total = (+newData.total * -1).toString();
+    if (newData.operation === null) {
+      newData.total = (+newData.total * -1).toString();
+    }
     if (newData.next !== null) newData.next = (+newData.next * -1).toString();
+  } else if (buttonName === '%') {
+    if (newData.operation === null) {
+      newData.total = (+newData.total / 100).toString();
+    }
+    if (newData.next !== null) newData.next = (+newData.next / 100).toString();
   } else if (opRegex.test(buttonName)) {
     if (newData.total !== null && newData.next !== null) {
       newData.total = operate(newData.total, newData.next, newData.operation);
       newData.next = null;
-      newData.operation = null;
     }
-    newData.operation = buttonName;
+    if (newData.total !== null) newData.operation = buttonName;
   } else if (buttonName === '.') {
     if (
       newData.operation === null
+      && newData.total !== null
       && newData.total.indexOf('.') < 0
       && newData.total.length > 0
+      && !newData.equalButtonPressed
     ) {
       newData.total += buttonName;
     } else if (
@@ -38,12 +56,20 @@ const calculate = ({ total, next, operation }, buttonName) => {
       newData.total = operate(newData.total, newData.next, newData.operation);
       newData.next = null;
       newData.operation = null;
+      newData.equalButtonPressed = true;
     }
   } else if (digitRegex.test(buttonName)) {
     if (newData.operation === null) {
-      newData.total = newData.total === '0' || newData.total === null
-        ? newData.total = buttonName
-        : newData.total + buttonName;
+      if (
+        newData.total === '0'
+        || newData.total === null
+        || newData.equalButtonPressed
+      ) {
+        newData.total = buttonName;
+        newData.equalButtonPressed = false;
+      } else {
+        newData.total += buttonName;
+      }
     } else {
       newData.next = newData.next === null
         ? newData.next = buttonName

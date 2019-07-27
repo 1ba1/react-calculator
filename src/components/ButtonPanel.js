@@ -8,9 +8,7 @@ const containerStyles = {
 };
 
 const ButtonPanel = ({ clickHandler }) => {
-  function handleClick(buttonName) {
-    return clickHandler(buttonName);
-  }
+  const handleClick = buttonName => clickHandler(buttonName);
 
   const buttons = [
     'AC',
@@ -20,7 +18,7 @@ const ButtonPanel = ({ clickHandler }) => {
     '7',
     '8',
     '9',
-    'X',
+    'x',
     '4',
     '5',
     '6',
@@ -33,7 +31,7 @@ const ButtonPanel = ({ clickHandler }) => {
     '.',
     '=',
   ].map((prop) => {
-    const regex = /^[+]$|^[-]$|X|÷|=/;
+    const regex = /^[+]$|^[-]$|x|÷|=/;
     if (regex.test(prop)) {
       return <Button key={prop} name={prop} clickHandler={handleClick} />;
     }

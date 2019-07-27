@@ -8,6 +8,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -22,5 +23,6 @@ module.exports = {
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
     'import/no-unresolved': 'off',
     'react/no-unused-state': 'off',
+    'no-nested-ternary': 'off',
   },
 };

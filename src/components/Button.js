@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  name, color, wide, clickHandler,
+  name,
+  color,
+  wide,
+  clickHandler,
 }) => {
-  function handleClick() {
-    return clickHandler(name);
-  }
+  const handleClick = () => clickHandler(name);
 
   const styles = {
     border: '1px solid #aaa',
