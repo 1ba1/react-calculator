@@ -30,11 +30,18 @@ const calculate = ({
     }
     if (newData.next !== null) newData.next = (+newData.next / 100).toString();
   } else if (opRegex.test(buttonName)) {
-    if (newData.total !== null && newData.next !== null) {
+    if (
+      newData.total !== null
+      && newData.total !== 'Error!'
+      && newData.next !== null
+    ) {
       newData.total = operate(newData.total, newData.next, newData.operation);
       newData.next = null;
+      newData.operation = null;
     }
-    if (newData.total !== null) newData.operation = buttonName;
+    if (newData.total !== null && newData.total !== 'Error!') {
+      newData.operation = buttonName;
+    }
   } else if (buttonName === '.') {
     if (
       newData.operation === null
@@ -62,6 +69,7 @@ const calculate = ({
     if (newData.operation === null) {
       if (
         newData.total === '0'
+        || newData.total === 'Error!'
         || newData.total === null
         || newData.equalButtonPressed
       ) {
