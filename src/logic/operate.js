@@ -1,20 +1,23 @@
-import Big from './big';
+import Big from 'big-js';
 
 const operate = (numberOne, numberTwo, operation) => {
+  if (numberTwo === '0' && operation === '÷') return 'Error!';
+
+  const x = Big(numberOne);
+  const y = Big(numberTwo);
+
   switch (operation) {
     case '+':
-      return Big(numberOne + numberTwo);
+      return x.plus(y).toString();
     case '-':
-      return Big(numberOne - numberTwo);
-    case 'X':
-      return Big(numberOne * numberTwo);
+      return x.minus(y).toString();
+    case 'x':
+      return x.times(y).toString();
     case '÷':
-      return Big(numberOne / numberTwo);
-    case '%':
-      return Big(numberOne % numberTwo);
+      return x.div(y).toString();
     default:
+      return false;
   }
-  return false;
 };
 
 export default operate;

@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ name, color, wide }) => {
+const Button = ({
+  name,
+  color,
+  wide,
+  clickHandler,
+}) => {
+  const handleClick = () => clickHandler(name);
+
   const styles = {
     border: '1px solid #aaa',
     backgroundColor: color,
@@ -11,13 +18,22 @@ const Button = ({ name, color, wide }) => {
     width: wide ? '50%' : '25%',
   };
 
-  return <button type="button" style={styles}>{name}</button>;
+  return (
+    <button
+      type="button"
+      style={styles}
+      onClick={handleClick}
+    >
+      {name}
+    </button>
+  );
 };
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
   wide: PropTypes.bool,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
