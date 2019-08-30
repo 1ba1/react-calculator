@@ -7,8 +7,6 @@ const Button = ({
   wide,
   clickHandler,
 }) => {
-  const handleClick = () => clickHandler(name);
-
   const styles = {
     border: '1px solid #aaa',
     backgroundColor: color,
@@ -22,7 +20,7 @@ const Button = ({
     <button
       type="button"
       style={styles}
-      onClick={handleClick}
+      onClick={() => clickHandler(name)}
     >
       {name}
     </button>

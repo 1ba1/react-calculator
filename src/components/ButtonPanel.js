@@ -8,8 +8,6 @@ const containerStyles = {
 };
 
 const ButtonPanel = ({ clickHandler }) => {
-  const handleClick = buttonName => clickHandler(buttonName);
-
   const buttons = [
     'AC',
     '+/-',
@@ -33,7 +31,7 @@ const ButtonPanel = ({ clickHandler }) => {
   ].map((prop) => {
     const regex = /^[+]$|^[-]$|x|÷|=/;
     if (regex.test(prop)) {
-      return <Button key={prop} name={prop} clickHandler={handleClick} />;
+      return <Button key={prop} name={prop} clickHandler={clickHandler} />;
     }
     if (prop === '0') {
       return (
@@ -42,12 +40,12 @@ const ButtonPanel = ({ clickHandler }) => {
           name={prop}
           color="#ddd"
           wide
-          clickHandler={handleClick}
+          clickHandler={clickHandler}
         />
       );
     }
     return (
-      <Button key={prop} name={prop} color="#ddd" clickHandler={handleClick} />
+      <Button key={prop} name={prop} color="#ddd" clickHandler={clickHandler} />
     );
   });
 
